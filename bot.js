@@ -42,6 +42,49 @@ bot.command('cancel', (ctx) => {
     ctx.reply('You don\'t have any active submission to cancel. Type /found if you want to start one!');
 });
 
+bot.command('link', async (ctx) => {
+    const userId = ctx.from.id;
+    const args = ctx.message.text.split(' ').slice(1);
+    const matricNumber = args[0];
+
+    if (!matricNumber) {
+        return ctx.reply(
+            'Please include your matric number.\n\nExample: /link 2025181477'
+        );
+    }
+
+    try {
+        const response = await fetch(`${process.env.LARAVEL_APP_URL}/api/bot/link-account`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json',
+                'X-Bot-Secret': process.env.LARAVEL_BOT_SECRET
+            },
+            body: JSON.stringify({
+                matric_number: matricNumber,
+                telegram_chat_id: userId.toString()
+            })
+        });
+
+        const data = await response.json();
+
+        if (!response.ok) {
+            return ctx.reply(
+                `❌ Could not link your account: ${data.message ?? 'Matric number not found.'}\n\nMake sure you are registered on the Campus Lost & Found portal first.`
+            );
+        }
+
+        ctx.reply(
+            '✅ Your Telegram account is now linked to the Campus Lost & Found portal!\n\nYou will receive instant notifications when our AI finds a match for your lost items.'
+        );
+
+    } catch (error) {
+        console.error('Link account failed:', error);
+        ctx.reply('Whoops, I had trouble connecting to the server. Please try again later.');
+    }
+});
+
 // Category button handler
 bot.action(/^cat_(\d+)$/, async (ctx) => {
     const userId = ctx.from.id;
