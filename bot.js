@@ -130,7 +130,7 @@ bot.on('photo', async (ctx) => {
             category_id: userSessions[userId].category_id
         };
 
-        const response = await fetch(`${process.env.LARAVEL_URL}/api/bot/submit`, {
+        const response = await fetch(`${process.env.LARAVEL_APP_URL}/api/bot/submit`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
