@@ -173,7 +173,7 @@ bot.on('location', async (ctx) => {
     const foundItemId = userSessions[userId].found_item_id;
 
     try {
-        const response = await fetch(`${process.env.LARAVEL_URL}/api/bot/update-location`, {
+        const response = await fetch(`${process.env.LARAVEL_APP_URL}/api/bot/update-location`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
