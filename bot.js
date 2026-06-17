@@ -24,7 +24,18 @@ const categoryKeyboard = Markup.inlineKeyboard(
 );
 
 bot.start((ctx) => {
-    ctx.reply('Welcome to the Campus Lost & Found Bot! Use the /found command to report an item you have discovered.');
+    ctx.reply(
+        '👋 Welcome to the Campus Lost & Found Bot!\n\n' +
+        'This bot helps connect students who find lost items with those who lost them.\n\n' +
+        '📋 Here\'s what you can do:\n\n' +
+        '1️⃣ Found something?\n' +
+        'Send /found to report a found item. You\'ll be asked for a photo, category, and location.\n\n' +
+        '2️⃣ Want to receive match alerts?\n' +
+        'If you have a web account at campuslostfound.cxdzy.dev, link it by sending:\n' +
+        '/link YOUR_MATRIC_NUMBER\n\n' +
+        'Example: /link 2025181477\n\n' +
+        'Use /cancel at any time to reset.'
+    );
 });
 
 bot.command('found', (ctx) => {
@@ -40,22 +51,6 @@ bot.command('cancel', (ctx) => {
         return ctx.reply('Submission cancelled. Your session has been reset.');
     }
     ctx.reply('You don\'t have any active submission to cancel. Type /found if you want to start one!');
-});
-
-bot.command('start', (ctx) => {
-    ctx.reply(
-        '👋 Welcome to the Campus Lost & Found Bot!\n\n' +
-        'This bot helps connect students who find lost items with those who lost them.\n\n' +
-        '📋 Here\'s what you can do:\n\n' +
-        '1️⃣ *Found something?*\n' +
-        'Send /found to report a found item. You\'ll be asked for a photo, category, and location.\n\n' +
-        '2️⃣ *Want to receive match alerts?*\n' +
-        'If you have a web account at campuslostfound.cxdzy.dev, link it by sending:\n' +
-        '/link YOUR\\_MATRIC\\_NUMBER\n\n' +
-        'Example: /link 2025181477\n\n' +
-        '❓ Need help? Use /cancel at any time to reset.',
-        { parse_mode: 'Markdown' }
-    );
 });
 
 bot.command('link', async (ctx) => {
