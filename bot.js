@@ -145,7 +145,8 @@ bot.on('photo', async (ctx) => {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
-                'Accept': 'application/json'
+                'Accept': 'application/json',
+                'X-Bot-Secret': (process.env.LARAVEL_BOT_SECRET || '').trim()
             },
             body: JSON.stringify(payload)
         });
@@ -188,7 +189,8 @@ bot.on('location', async (ctx) => {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
-                'Accept': 'application/json'
+                'Accept': 'application/json',
+                'X-Bot-Secret': (process.env.LARAVEL_BOT_SECRET || '').trim()
             },
             body: JSON.stringify({ latitude, longitude, found_item_id: foundItemId })
         });
