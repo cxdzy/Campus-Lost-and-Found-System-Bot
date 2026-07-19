@@ -70,7 +70,7 @@ bot.command('link', async (ctx) => {
             headers: {
                 'Content-Type': 'application/json',
                 'Accept': 'application/json',
-                'X-Bot-Secret': process.env.LARAVEL_BOT_SECRET
+                'X-Bot-Secret': (process.env.LARAVEL_BOT_SECRET || '').trim()
             },
             body: JSON.stringify({
                 matric_number: matricNumber,
