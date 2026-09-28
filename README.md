@@ -4,14 +4,14 @@ The Telegram bot for **Campus Lost & Found**, a lost and found recovery system b
 
 The bot is a thin client. It collects the report from the student and hands everything to the Laravel back-end over HTTP. All storage, AI tagging, and matching happen in the back-end.
 
-**Live portal:** https://campuslostfound.cxdzy.dev
+**Live portal:** https://campuslostfound.cxdzy.dev (invalid for mean time)
 
 ## Related repository
 
 | Repository | What it does |
 | --- | --- |
 | **This repo** | Telegram bot: guided found-item reporting and account linking |
-| [Campus Lost and Found System (Laravel back-end and web portal)](https://github.com/cxdzy/REPLACE-WITH-MAIN-REPO-NAME) | API, database, Vision AI tagging, matching engine, student portal, security dashboard |
+| [Campus Lost and Found System (Laravel back-end and web portal)](https://github.com/cxdzy/Campus-Lost-and-Found-System) | API, database, Vision AI tagging, matching engine, student portal, security dashboard |
 
 ## What the bot does
 
